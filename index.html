@@ -5,12 +5,20 @@
 
     <head>
         <title>keyzen</title>
-        <script src="query.min.js"></script>
+        <script src="jquery.min.js"></script>
         <script src="moment.min.js"></script>
         <script src="keyzen.js"></script>
         <script type="text/javascript" src="ez.countimer.js"></script>
 		<meta charset="UTF-8">
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.timer').countimer({
+                    autoStart : true
+                });
+            });
+        </script>
 
         <style>
 
@@ -81,7 +89,22 @@
                 cursor: hand;
                 color: #AAAAAA;
             }
-            
+
+            #timer-wrapper {
+                color: #AAA;
+                font-family: 'Ubuntu Monokz', sans-serif;
+                text-align: center;
+                margin-left: auto;
+                margin-right:auto;
+                position: absolute;
+                bottom: 7%;
+                width: 100%;
+            }
+
+            #timer-wrapper .timer {
+                font-size: 30px;
+            }
+
             #rigor {
                 font-size: 16px;
                 position: absolute;
@@ -119,13 +142,10 @@
                 color: #AAAAAA;
             	text-shadow: 0px 1px 1px #FFF, 0px 2px 2px #FFF;
             }
-            
         </style>
-
     </head>
 
     <body>
-
         <div id='container'>
 
             <div id='layout'>
@@ -146,8 +166,10 @@
             <div id="stats">
             </div>
 
+            <div id="timer-wrapper">
+                <div class="timer well">
+                </div>
+            </div>
         </div>        
-
     </body>
-    
 </html>
