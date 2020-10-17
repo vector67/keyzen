@@ -164,7 +164,7 @@ function render_layout() {
 	var layouts_html = "<span id='layout'>";
 	for(var layout in layouts){
 		if(data.current_layout == layout){
-			layouts_html += "<span style='color: #F00' onclick='set_layout(\"" + layout + "\");'> "
+			layouts_html += "<span style='color: #F78D1D' onclick='set_layout(\"" + layout + "\");'> "
 		} else {
 		 layouts_html += "<span style='color: #AAA' onclick='set_layout(\"" + layout + "\");'> "
 		}
@@ -180,7 +180,7 @@ function render_level() {
     var training_chars = get_training_chars();
     for (var c in data.chars) {
         if(training_chars.indexOf(data.chars[c]) != -1) {
-            chars += "<span style='color: #F00' onclick='set_level(" + c + ");'>"
+            chars += "<span style='color: #F78D1D' onclick='set_level(" + c + ");'>"
         }
         else if (level_chars.indexOf(data.chars[c]) != -1) {
             chars += "<span style='color: #000' onclick='set_level(" + c + ");'>"
