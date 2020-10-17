@@ -5,11 +5,22 @@
 
     <head>
         <title>keyzen</title>
-        <script src="jquery.js"></script>
+        <script src="jquery.min.js"></script>
+        <script src="moment.min.js"></script>
         <script src="keyzen.js"></script>
+        <script type="text/javascript" src="ez.countimer.js"></script>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.timer').countimer({
+                    autoStart : true
+                });
+            });
+        </script>
 
         <style>
-
             @font-face {
               font-family: 'Ubuntu Monokz';
               font-style: normal;
@@ -39,7 +50,7 @@
             #word {
                 color: #AAA;
                 position: absolute;
-                top: 50%;
+                top: 30%;
                 margin-top: -64px;
                 height:128px;
                 font-size: 128px;
@@ -62,22 +73,75 @@
                 height: 2px;
                 background-color: #f78d1d;
                 margin-left: auto;
-                margin-right:auto;
+                margin-right: auto;
             }
 
-            #level-chars {
+            #level-chars, #layout {
                 font-size: 16px;
                 width:95%;
                 text-align: center;
-                padding: 16px;
+                padding-top: 16px;
                 margin-left: auto;
-                margin-right:auto;
+                margin-right: auto;
                 word-wrap: break-word;
                 font-weight: bold;
                 cursor: hand;
                 color: #AAAAAA;
             }
-            
+
+            #keyboard-layout {
+                width: 37%;
+                position: absolute;
+                bottom: 15%;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+
+            #keyboard-layout img {
+                width: 100%;
+                margin: auto;
+                display: block;
+            }
+
+            #timer-wrapper {
+                color: #AAA;
+                font-family: 'Ubuntu Monokz', sans-serif;
+                text-align: center;
+                margin-left: auto;
+                margin-right:auto;
+                position: absolute;
+                bottom: 7%;
+                width: 100%;
+            }
+
+            #timer-wrapper .timer {
+                font-size: 30px;
+            }
+
+            #title {
+                color: #AAA;
+                position: absolute;
+                bottom: 18px;
+                text-align: center;
+                margin-left: auto;
+                margin-right:auto;
+                font-family: 'Ubuntu Monokz', sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+                width:100%;
+            }
+
+            a {
+                color: #AAAAAA;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #f78d1d;
+                text-decoration: underline;
+            }
+
             #rigor {
                 font-size: 16px;
                 position: absolute;
@@ -115,14 +179,13 @@
                 color: #AAAAAA;
             	text-shadow: 0px 1px 1px #FFF, 0px 2px 2px #FFF;
             }
-            
         </style>
-
     </head>
 
     <body>
-
         <div id='container'>
+            <div id='layout'>
+            </div>
 
             <div id='level-chars'>
             </div>
@@ -132,15 +195,25 @@
 
             <div id='word'>
             </div>
-            
+
+            <div id="keyboard-layout">
+                <img src="colemak_mod-dh.png" alt="colemak_mod-dh.png">
+            </div>
+
+            <div id="timer-wrapper">
+                <div class="timer well">
+                </div>
+            </div>
+
+            <div id='title'>
+                <a href="https://github.com/ranelpadon/keyzen-colemak-mod-dh">Keyzen-Colemak-Mod-DH</a>
+            </div>
+
             <div id='rigor'>
             </div>
 
             <div id="stats">
             </div>
-
         </div>        
-
     </body>
-    
 </html>
