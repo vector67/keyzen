@@ -21,7 +21,6 @@
         </script>
 
         <style>
-
             @font-face {
               font-family: 'Ubuntu Monokz';
               font-style: normal;
@@ -51,7 +50,7 @@
             #word {
                 color: #AAA;
                 position: absolute;
-                top: 50%;
+                top: 30%;
                 margin-top: -64px;
                 height:128px;
                 font-size: 128px;
@@ -88,6 +87,21 @@
                 font-weight: bold;
                 cursor: hand;
                 color: #AAAAAA;
+            }
+
+            #keyboard-layout {
+                width: 37%;
+                position: absolute;
+                bottom: 15%;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+
+            #keyboard-layout img {
+                width: 100%;
+                margin: auto;
+                display: block;
             }
 
             #timer-wrapper {
@@ -147,7 +161,6 @@
 
     <body>
         <div id='container'>
-
             <div id='layout'>
             </div>
 
@@ -159,16 +172,20 @@
 
             <div id='word'>
             </div>
-            
-            <div id='rigor'>
-            </div>
 
-            <div id="stats">
+            <div id="keyboard-layout">
+                <img src="colemak_mod-dh.png" alt="colemak_mod-dh.png">
             </div>
 
             <div id="timer-wrapper">
                 <div class="timer well">
                 </div>
+            </div>
+
+            <div id='rigor'>
+            </div>
+
+            <div id="stats">
             </div>
         </div>        
     </body>
