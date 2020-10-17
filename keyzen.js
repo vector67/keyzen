@@ -27,6 +27,8 @@ $(document).ready(function() {
         set_level(1);
     }
     $(document).keypress(keyHandler);
+
+    showKeyboardViewerIfColemakModDHLayout();
 });
 
 
@@ -76,6 +78,8 @@ function set_layout(l) {
     data.keys_hit = "";
     save();
     render();
+
+    showKeyboardViewerIfColemakModDHLayout();
 }
 
 
@@ -315,4 +319,14 @@ function get_training_chars() {
 
 function choose(a) {
     return a[Math.floor(Math.random() * a.length)];
+}
+
+function showKeyboardViewerIfColemakModDHLayout() {
+    if (data.current_layout == "colemak-mod-dh") {
+        $('#keyboard-layout').show();
+    }
+
+    else {
+        $('#keyboard-layout').hide();
+    }
 }
