@@ -200,7 +200,7 @@ function render_rigor() {
     chars = "<span id='rigor-number' onclick='inc_rigor();'>";
     chars += '' + data.consecutive;
     chars += '<span>';
-    $('#rigor').html('click to set required repititions: ' + chars);
+    $('#rigor').html('click to set required repetitions: ' + chars);
 }
 
 function render_stats() {
