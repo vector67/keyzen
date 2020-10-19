@@ -89,7 +89,7 @@
                 color: #AAAAAA;
             }
 
-            #keyboard-layout {
+            .keyboard-layout {
                 width: 37%;
                 position: absolute;
                 bottom: 15%;
@@ -98,7 +98,7 @@
                 margin: auto;
             }
 
-            #keyboard-layout img {
+            .keyboard-layout img {
                 width: 100%;
                 margin: auto;
                 display: block;
@@ -196,11 +196,16 @@
             <div id='word'>
             </div>
 
-            <div id="keyboard-layout">
-                <img src="assets/colemakdh.png" alt="colemakdh.png">
+            <!-- GitHub Pages need the `.` to indicate the current directory. -->
+            <!-- https://www.elharony.com/images-not-displaying-in-github-pages/ -->
+            <div class="keyboard-layout" data-layout="colemak-mod-dh">
+                <img src="./assets/img/colemak-mod-dh.png" alt="colemak-mod-dh.png">
             </div>
-            <div id="keyboard-layout">
-                <img src="./assets/colemakdh.png" alt="colemakdh.png">
+            <div class="keyboard-layout" data-layout="colemak">
+                <img src="./assets/img/colemak.png" alt="colemak.png">
+            </div>
+            <div class="keyboard-layout" data-layout="qwerty">
+                <img src="./assets/img/qwerty.png" alt="qwerty.png">
             </div>
 
             <div id="timer-wrapper">

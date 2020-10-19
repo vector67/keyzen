@@ -28,7 +28,7 @@ $(document).ready(function() {
     }
     $(document).keypress(keyHandler);
 
-    showKeyboardViewerIfColemakModDHLayout();
+    showActiveLayoutKeyboard();
 });
 
 
@@ -79,7 +79,7 @@ function set_layout(l) {
     save();
     render();
 
-    showKeyboardViewerIfColemakModDHLayout();
+    showActiveLayoutKeyboard();
 }
 
 
@@ -321,12 +321,9 @@ function choose(a) {
     return a[Math.floor(Math.random() * a.length)];
 }
 
-function showKeyboardViewerIfColemakModDHLayout() {
-    if (data.current_layout == "colemak-mod-dh") {
-        $('#keyboard-layout').show();
-    }
-
-    else {
-        $('#keyboard-layout').hide();
-    }
+function showActiveLayoutKeyboard() {
+    // Hide all, the show the active.
+    $('.keyboard-layout').hide();
+    var currentLayout = data.current_layout;
+    $('.keyboard-layout[data-layout="' + currentLayout + '"]').show()
 }
