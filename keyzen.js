@@ -5,18 +5,19 @@ var start_time = 0;
 var hpm = 0;
 var ratio = 0;
 
-data.chars = " jfkdlsahgyturieowpqbnvmcxz6758493021`-=[]\\;',./ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
-data.consecutive = 5;
-data.word_length = 7;
-data.current_layout = "colemak-mod-dh";
 layouts={};
-layouts["colemak-mod-dh"] = " tnseriaogkplfuwyq;bjdhvmc,x.z/1234567890'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
-layouts["colemak"] = " tnseriaodhplfuwyq;vmc,x.z/bk1234567890'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
-layouts["qwerty"] = " fjdksla;ghrueiwoqptyvmc,x.z/bn6758493021`-=[]\\'ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
+layouts["colemak-dh"] = " tnseriaogkplfuwyq;bjvhd,c.x/zm4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
+layouts["colemak"] = " tnseriaodhplfuwyq;vmc,x.z/bk4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
+layouts["qwerty"] = " fjdksla;ghrueiwoqptyvmc,x.z/bn4738291056`-=[]\\'ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
 // layouts["azerty"] = " jfkdlsmqhgyturieozpabnvcxw6758493021`-=[]\\;',./ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
 // layouts["b�po"] = " tesirunamc,�vodpl�jbk'.qxghyf�zw6758493021`-=[]\\;/ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
 // layouts["norman"] = " ntieosaygjkufrdlw;qbpvmcxz1234567890'\",.!?:;/@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
 // layouts["code-es6"] = " {}',;():.>=</_-|`!?#[]\\+\"@$%&*~^";
+
+data.chars = layouts["colemak-dh"];
+data.consecutive = 5;
+data.word_length = 7;
+data.current_layout = "colemak-dh";
 
 $(document).ready(function() {
     if (localStorage.data != undefined) {
@@ -322,7 +323,7 @@ function choose(a) {
 }
 
 function showActiveLayoutKeyboard() {
-    // Hide all, the show the active.
+    // Hide all, then show the active.
     $('.keyboard-layout').hide();
     var currentLayout = data.current_layout;
     $('.keyboard-layout[data-layout="' + currentLayout + '"]').show()
