@@ -172,7 +172,7 @@ function render_layout() {
 		layouts_html += layout + "</span>";
 	}
 	layouts_html += "</span>";
-	$("#layout").html('Choose layout : ' + layouts_html);
+	$("#layout").html('click to set layout: ' + layouts_html);
 }
 
 function render_level() {
@@ -205,12 +205,12 @@ function render_rigor() {
     chars = "<span id='rigor-number' onclick='inc_rigor();'>";
     chars += '' + data.consecutive;
     chars += '<span>';
-    $('#rigor').html('click to set required repetitions: ' + chars);
+    $('#rigor').html('click to set intensity: ' + chars);
 }
 
 function render_stats() {
     $("#stats").text([
-        "hits per minute: ", hpm, " ",
+        "raw WPM: ", hpm / 5, " ",
         "correctness: ", ratio, "%"
     ].join(""));
 }
