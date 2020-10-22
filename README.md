@@ -1,4 +1,7 @@
 
+# KeyZen Colemak-DH
+
+
 ## About
 
 This project was inspired by [Keyzen Colemak](http://first20hours.github.com/keyzen-colemak/), which was implemented by Josh Kaufman, and featured in his **The First 20 Hours** book (one of his challenges is to learn Colemak in 20 hours).
@@ -9,17 +12,17 @@ Aside from my added features, I modified also the default `error` sound to make 
 
 
 ## Features
-* Character sequences are spitted gradually and randomly, starting with the most important ones. Home row, top row, then bottom row.
-* If you commit mistakes, the letters will be reintroduced again for better feedback loop and to maximize learning. 
+* Character sequences are generated randomly, new letters are introduced as your level increases. Home row, top row, then bottom row.
+* If you commit mistakes, the letters will be reintroduced again to maximize training.
+* Characters could be reset/skipped by clicking on it.
 * Intensity/rigor could be adjusted.
 * Speed/accuracy stats are displayed.
-* Characters could be reset/skipped by clicking on it.
-* Keyboard images are displayed depending on your layout as a handy reference and to discourage looking into the physical keyboard.
-* There's a timer to keep track your progress, or to have a rough idea on how much time you spend on it for better planning.
+* There's a timer to keep track your progress, or for better planning.
 * Useful for beginners to familiarize the keys.
-* Useful for experienced users to strengthen their weaknesses (e.g. training on specific letters, numbers, capital letters, punctuations, etc).
-* Keyboard layout could be chosen. Colemak DH (angle/ergo mod) is the recommended one for maximum gains since it encourages using the curling technique.
-* QWERTY is included for legacy purposes and for promoting touch typing generally to people.
+* Useful for experienced ones to strengthen their weaknesses (e.g. specific letters, capital letters, punctuations, etc).
+* Keyboard layout could be chosen. **Colemak DH** (angle mod) is the default/recommended.
+* Keyboard layout images are displayed accordingly as a handy reference.
+* QWERTY is included for legacy purposes and for promoting touch typing to people.
 
 
 ## Hosted Version
