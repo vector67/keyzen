@@ -28,7 +28,7 @@ https://ranelpadon.github.io/keyzen-colemak-dh/
 
 
 ## Local Version/Installation
-If you're offline, or GitHub Pages is not accessible, or want to mofidy some parts and run it locally, you could easily do that using a local web server. Here are samples using the mainstream Python/PHP utilities:
+If you're offline, or GitHub Pages is not accessible, or want to modify some parts and run it locally, you could easily do that using a local web server. Here are samples using the mainstream Python/PHP utilities:
 
 
 1. [Download the repo](https://github.com/ranelpadon/keyzen-colemak-dh/archive/master.zip) and unzip it in your local.
@@ -42,6 +42,6 @@ If you're offline, or GitHub Pages is not accessible, or want to mofidy some par
     - PHP
         - `php -S 0.0.0.0:8000`
 
-3. Go to `http://0.0.0.0:8000/` in your browser.        
+3. Go to `http://0.0.0.0:8000` in your browser.
 
 
