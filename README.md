@@ -6,7 +6,7 @@
 
 This project was inspired by [KeyZen Colemak](http://first20hours.github.com/keyzen-colemak/), which was implemented by Josh Kaufman, and featured in his [**The First 20 Hours**](https://first20hours.com/) book (one of his personal challenges is to learn Colemak in 20 hours in which he succeeded).
 
-Kaufman's project is based on [KeyZen](https://github.com/wwwtyro/keyzen) which has numerous changes since he cloned it. So, I've used the original Keyzen repo and based my fork from it and added features/improvements that I think were lacking. Personally, I use this everyday upon waking up to strengthen my grasp of the entire alphabet since most of the time I practice on common letters only (i.e. bigrams, trigrams, Top 200 words, etc).
+Kaufman's project is based on [KeyZen](https://github.com/wwwtyro/keyzen) which has numerous changes since he cloned it. So, I've used the original KeyZen repo and based my fork from it and added features/improvements that I think were lacking. Personally, I use this everyday upon waking up to strengthen my grasp of the entire alphabet since most of the time I practice on common letters only (i.e. bigrams, trigrams, Top 200 words, etc).
 
 Aside from my added features, I modified also the default `error` sound to make it more pleasant, and updated the `jQuery` library to latest version since the bundled version is 10 years old already. This will make it easier for others to extend the code.
 
@@ -20,7 +20,7 @@ Aside from my added features, I modified also the default `error` sound to make 
 * There's a timer to keep track your progress, or for better planning.
 * Useful for beginners to familiarize the keys.
 * Useful for experienced ones to strengthen their weaknesses (e.g. specific letters, capital letters, punctuations, etc).
-* Keyboard layout could be chosen. **Colemak DH** (angle mod) is the default/recommended.
+* Keyboard layout could be chosen. **Colemak-DH** (angle mod) is the default/recommended.
 * Keyboard layout images are displayed accordingly as a handy reference.
 * QWERTY is included for legacy purposes and for promoting touch typing to people.
 
