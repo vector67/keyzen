@@ -8,7 +8,7 @@ This project was inspired by [KeyZen Colemak](http://first20hours.github.com/key
 
 Kaufman's project is based on [KeyZen](https://github.com/wwwtyro/keyzen) which has numerous changes since he cloned it. So, I've used the original KeyZen repo and based my fork from it and added features/improvements that I think were lacking. Personally, I use this everyday upon waking up to strengthen my grasp of the entire alphabet since most of the time I practice on common letters only (i.e. bigrams, trigrams, Top 200 words, etc).
 
-Aside from my added features, I modified also the default `error` sound to make it more pleasant, and updated the `jQuery` library to latest version since the bundled version is 10 years old already. This will make it easier for others to extend the code.
+Aside from my added features, I modified also the default sound files for correct/incorrect keys for better user experience, and updated the `jQuery` library to latest version since the bundled version is 10 years old already. This will make it easier for others to extend the code.
 
 
 ## Features
