@@ -98,13 +98,13 @@ function keyHandler(e) {
     if(key == data.word[data.word_index]) {
         hits_correct += 1;
         data.in_a_row[key] += 1;
-        (new Audio("click.wav")).play();
+        (new Audio("click.mp3")).play();
     }
     else {
         hits_wrong += 1;
         data.in_a_row[data.word[data.word_index]] = 0;
         data.in_a_row[key] = 0;
-        (new Audio("clack.wav")).play();
+        (new Audio("clack.mp3")).play();
         data.word_errors[data.word_index] = true;
     }
     data.word_index += 1;
