@@ -14,8 +14,10 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $('.timer').countimer({
-                    autoStart : true
+                $('body').one('keyup', function() {
+                    $('.timer').countimer({
+                        autoStart : true
+                    });
                 });
             });
         </script>
