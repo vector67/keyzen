@@ -17,7 +17,7 @@ Aside from my added features, I modified also the default sound files for correc
 * Characters could be reset/skipped by clicking on it.
 * Intensity/rigor could be adjusted.
 * Speed/accuracy stats are displayed.
-* There's a timer to keep track your progress, or for better planning.
+* There's a timer once you start typing to keep track your progress, or for better planning.
 * Useful for beginners to familiarize the keys.
 * Useful for experienced ones to strengthen their weaknesses (e.g. specific letters, capital letters, punctuations, etc).
 * Keyboard layout could be chosen. **Colemak-DH** (angle mod) is the default/recommended.
