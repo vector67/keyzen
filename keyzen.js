@@ -214,7 +214,7 @@ function render_rigor() {
 function render_stats() {
     $("#stats").text([
         "raw WPM: ", hpm / 5, " ",
-        "correctness: ", ratio, "%"
+        "accuracy: ", ratio, "%"
     ].join(""));
 }
 
