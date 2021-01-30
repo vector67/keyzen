@@ -23,6 +23,7 @@ Aside from my added features, I modified also the default sound files for correc
 * Keyboard layout could be chosen. **Colemak-DH** (angle mod) is the default/recommended.
 * Keyboard layout images are displayed accordingly as a handy reference.
 * QWERTY is included for legacy purposes and for promoting touch typing to people.
+* Custom layout/limited set of characters could be specified (specific punctuations, numbers, capitalized letters, etc).
 
 
 ## Hosted Version
