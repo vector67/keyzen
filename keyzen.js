@@ -218,7 +218,7 @@ function render_level() {
         $editCustomCharsLink = $('#edit-custom-chars');
         $editCustomCharsLink.click(function() {
             var $customCharsModal = $('#custom-chars-modal');
-            var customChars = window.data.custom_chars;
+            var customChars = window.data.custom_chars || window.layouts[data.current_layout];
             $customCharsModal.find('textarea').val(customChars);
 
             $(document).off('keypress');
