@@ -9,8 +9,10 @@
         <script src="moment.min.js"></script>
         <script src="keyzen.js"></script>
         <script type="text/javascript" src="ez.countimer.js"></script>
-		<meta charset="UTF-8">
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -40,7 +42,8 @@
                 -khtml-user-select: none;
                 -moz-user-select: none;
                 -ms-user-select: none;
-                user-select: none;            
+                user-select: none;
+                line-height: initial;
             }
 
             #container {
@@ -181,6 +184,10 @@
                 color: #AAAAAA;
             	text-shadow: 0px 1px 1px #FFF, 0px 2px 2px #FFF;
             }
+
+            .modal-dialog {
+                padding-top: 8%;
+            }
         </style>
     </head>
 
@@ -220,7 +227,7 @@
             </div>
 
             <div id="timer-wrapper">
-                <div class="timer well">
+                <div class="timer">
                 </div>
             </div>
 
@@ -233,6 +240,25 @@
 
             <div id="stats">
             </div>
-        </div>        
+
+            <!-- Modal for the custom text. -->
+            <div id="custom-chars-modal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body">
+                            <p>Put the custom characters here (e.g. specific letters/capitalization, punctuations, or numbers).</p>
+                            <textarea id="custom-chars-modal--text-area" rows="5" cols="75">
+                            </textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="custom-chars-modal--ok-button">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

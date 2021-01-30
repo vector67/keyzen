@@ -12,6 +12,8 @@ layouts["colemak-dhk"] = " tnseriaogkplfuwyq;bjvhd,c.x/zm4738291056'\"!?:@$%&#*(
 layouts["colemak-dh-matrix"] = " tnseriaogmplfuwyq;bjdhc,x.z/vk4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
 layouts["colemak-dhk-matrix"] = " tnseriaogkplfuwyq;bjdhc,x.z/vm4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
 layouts["qwerty"] = " fjdksla;ghrueiwoqptyvmc,x.z/bn4738291056`-=[]\\'ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
+layouts["custom"] = " #=-*_`>![]()1234567890";
+
 // layouts["azerty"] = " jfkdlsmqhgyturieozpabnvcxw6758493021`-=[]\\;',./ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
 // layouts["b�po"] = " tesirunamc,�vodpl�jbk'.qxghyf�zw6758493021`-=[]\\;/ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
 // layouts["norman"] = " ntieosaygjkufrdlw;qbpvmcxz1234567890'\",.!?:;/@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
@@ -21,10 +23,16 @@ data.chars = layouts["colemak-dh"];
 data.consecutive = 5;
 data.word_length = 7;
 data.current_layout = "colemak-dh";
+data.custom_chars = '';
+
+CUSTOM_LAYOUT = 'custom';
 
 $(document).ready(function() {
     if (localStorage.data != undefined) {
         load();
+        if (data.current_layout == CUSTOM_LAYOUT && data.custom_chars) {
+            data.chars = data.custom_chars;
+        }
         render();
     }
     else {
@@ -165,17 +173,17 @@ function render() {
 }
 
 function render_layout() {
-	var layouts_html = "<span id='layout'>";
-	for(var layout in layouts){
-		if(data.current_layout == layout){
-			layouts_html += "<span style='color: #F78D1D' onclick='set_layout(\"" + layout + "\");'> "
-		} else {
-		 layouts_html += "<span style='color: #AAA' onclick='set_layout(\"" + layout + "\");'> "
-		}
-		layouts_html += layout + "</span>";
-	}
-	layouts_html += "</span>";
-	$("#layout").html('click to set layout: ' + layouts_html);
+    var layouts_html = "<span id='layout'>";
+    for(var layout in layouts){
+        if(data.current_layout == layout){
+            layouts_html += "<span style='color: #F78D1D' onclick='set_layout(\"" + layout + "\");'> "
+        } else {
+            layouts_html += "<span style='color: #AAA' onclick='set_layout(\"" + layout + "\");'> "
+        }
+        layouts_html += layout + "</span>";
+    }
+    layouts_html += "</span>";
+    $("#layout").html('click to set layout: ' + layouts_html);
 }
 
 function render_level() {
@@ -202,6 +210,35 @@ function render_level() {
     }
     chars += "</span>";
     $("#level-chars").html('click to set level: ' + chars);
+
+    if (data.current_layout == CUSTOM_LAYOUT) {
+        $('#level-chars').append('<a id="edit-custom-chars" href="#" data-toggle="modal" data-target="#custom-chars-modal"></a>');
+        $('#level-chars #edit-custom-chars').append(' (<span style="color: #f78d1d">edit</span>)');
+
+        $editCustomCharsLink = $('#edit-custom-chars');
+        $editCustomCharsLink.click(function() {
+            var $customCharsModal = $('#custom-chars-modal');
+            var customChars = window.data.custom_chars;
+            $customCharsModal.find('textarea').val(customChars);
+
+            $(document).off('keypress');
+        });
+
+        $customCharsModalOkButton = $('#custom-chars-modal--ok-button');
+        $customCharsModalOkButton.click(function() {
+            var $customCharsModal = $('#custom-chars-modal');
+            var customCharsSubmitted = $customCharsModal.find('textarea').val();
+            var customCharsProccessed = customCharsSubmitted;
+            $customCharsModal.modal("hide");
+            window.layouts[data.current_layout] = customCharsProccessed;
+            window.data.chars = customCharsProccessed;
+            window.data.custom_chars = customCharsProccessed;
+            render_level();
+            save();
+
+            $(document).keypress(keyHandler);
+        });
+    }
 }
 
 function render_rigor() {
@@ -329,5 +366,8 @@ function showActiveLayoutKeyboard() {
     // Hide all, then show the active.
     $('.keyboard-layout').hide();
     var currentLayout = data.current_layout;
-    $('.keyboard-layout[data-layout="' + currentLayout + '"]').show()
+    // Custom chars have no default layout.
+    if (currentLayout != CUSTOM_LAYOUT) {
+        $('.keyboard-layout[data-layout="' + currentLayout + '"]').show()
+    }
 }
