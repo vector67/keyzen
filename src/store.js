@@ -2,7 +2,7 @@ import { Player } from './player.js'
 
 export class Store {
   chars = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*(){}?+_|[]/=-\\\',."<>`~:;'
-  consecutive = 30;
+  level = 30;
   word_length = 7;
   word_index = 0;
   current_layout = "colemak-dh";
@@ -13,7 +13,7 @@ export class Store {
   constructor(player, eventManager) {
     this.in_a_row = {};
     for(var i = 0; i < this.chars.length; i++) {
-      this.in_a_row[this.chars[i]] = this.consecutive;
+      this.in_a_row[this.chars[i]] = this.level;
     }
     // this.in_a_row[this.chars[l]] = 0;
     this.word_errors = {};
@@ -29,23 +29,15 @@ export class Store {
 
     this.player = player;
     this.eventManager = eventManager;
-
-    this.eventManager.subscribe('playerLost', (() => {
-      this.hits_wrong = 0;
-      this.hits_correct = 0;
-      this.player.reset();
-    }).bind(this));
-
-    this.eventManager.subscribe('playerGainedPoint', (() => {
-      this.hits_correct -= this.consecutive;
-      this.player.points += 1;
+    this.eventManager.subscribe('levelChanged', (({ level }) => {
+      this.level = level;
     }).bind(this));
   }
 
   restoreFromLocalStorage() {
     const data = JSON.parse(localStorage.data);
     this.chars = data.chars;
-    this.consecutive = data.consecutive;
+    this.level = data.level || 30;
     this.word_length = data.word_length;
     this.current_layout = data.current_layout;
     this.custom_chars = data.custom_chars;
@@ -62,14 +54,13 @@ export class Store {
     this.currentFile = data.currentFile;
     this.currentIndex = data.currentIndex;
 
-    console.log('initializing with', data.player);
-    this.player = new Player(data.player);
-    console.log('some player now has', this.player.points)
+    this.player = new Player(this.eventManager, data.player);
+    this.eventManager.dispatch('levelChanged', {level: this.level})
   }
   saveToLocalStorage() {
     const data = {};
     data.chars = this.chars;
-    data.consecutive = this.consecutive;
+    data.level = this.level;
     data.word_length = this.word_length;
     data.current_layout = this.current_layout;
     data.custom_chars = this.custom_chars;

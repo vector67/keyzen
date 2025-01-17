@@ -8,18 +8,18 @@ import { Renderer } from './renderer.js';
 import { UiHelper } from './ui-helper.js'
 import { Player } from './player.js'
 import { AudioManager } from './audio-manager.js'
+import { UpgradeManager} from './upgrade-manager.js'
 
 export function run() {
   const eventManager = new EventManager();
 
-  const player = new Player(eventManager);
+  const player = new Player(eventManager, {});
   const store = new Store(player, eventManager);
 
-  particles.initializeParticleSystem();
   const stats = new Stats(store, eventManager);
   const renderer = new Renderer(store, stats, particles, eventManager); 
   const wordManager = new WordManager(store, stats, renderer);
-  const keyboardManager = new KeyboardManager(store, stats, renderer, wordManager);
+  const keyboardManager = new KeyboardManager(store, stats, renderer, wordManager, eventManager);
   const audioManager = new AudioManager(eventManager);
 
   $(document).ready(function() {
@@ -33,7 +33,7 @@ export function run() {
 
   });
 
-  return new UiHelper(store, renderer, wordManager);
+  return new UiHelper(store, renderer, wordManager, eventManager);
 }
 
 

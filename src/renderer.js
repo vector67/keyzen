@@ -7,6 +7,9 @@ export class Renderer {
     this.eventManager.subscribe('playerLost', (() => {
       this.render();
     }).bind(this));
+    this.eventManager.subscribe('levelChanged', (() => {
+      this.render_level();
+    }).bind(this));
   }
   render() {
     this.render_before_words();
@@ -80,7 +83,7 @@ export class Renderer {
   }
   render_level() {
     let chars = "<span id='rigor-number' onclick='functions.increase_level();'>";
-    chars += '' + this.store.consecutive;
+    chars += '' + this.store.level;
     chars += '<span>';
     $('#rigor').html('letters per mistake goal: ' + chars);
   }

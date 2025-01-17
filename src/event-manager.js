@@ -13,7 +13,7 @@ export class EventManager {
 
   dispatch(eventName, eventObject) {
     this.eventSubscriptions[eventName].forEach(callback => {
-      callback.call(eventObject);
+      callback(eventObject);
     })
   }
 }

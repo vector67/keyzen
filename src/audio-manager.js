@@ -4,7 +4,7 @@ export class AudioManager {
   constructor(eventManager) {
     this.eventManager = eventManager;
 
-    this.eventManager.subscribe('playerGainedPoint', () => {
+    this.eventManager.subscribe('playerGainedUnit', () => {
       ding.play();
     });
   }

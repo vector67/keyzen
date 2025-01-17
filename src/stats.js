@@ -1,3 +1,10 @@
+class TimedKeystroke {
+  constructor(time, key, correct) {
+    this.time = time;
+    this.key = key;
+    this.correct = correct;
+  }
+}
 export class Stats {
   start_time;
   hpm;
@@ -8,6 +15,16 @@ export class Stats {
     this.eventManager = eventManager;
     this.eventManager.subscribe('playerLost', (() => {
       this.updateStats(0, 0);
+    }).bind(this));
+
+    this.keystrokes = [];
+
+    this.eventManager.subscribe('keystrokeCorrect', (({key}) => {
+      this.keystrokes.push(new TimedKeystroke(new Date(), key, true))
+    }).bind(this));
+
+    this.eventManager.subscribe('keystrokeWrong', (({key}) => {
+      this.keystrokes.push(new TimedKeystroke(new Date(), key, false))
     }).bind(this));
   }
 
@@ -35,28 +52,18 @@ export class Stats {
       "accuracy: ", this.ratio, "% ",
       "letters per mistake: ", Math.floor(this.keys_per_mistake)
     ].join(""));
-    // console.log('consecutive', this.store.consecutive, 'hits_wrong', hits_wrong, 'hits_correct', hits_correct)
+    // console.log('level', this.store.level, 'hits_wrong', hits_wrong, 'hits_correct', hits_correct)
     // console.log(`${hits_wrong} hits wrong`)
-    const keys_buffer = -(this.store.consecutive * hits_wrong - hits_correct);
-    let percentage = 0;
-    if (keys_buffer >= 0) {
-      percentage = 100;
-    } else {
-      percentage = Math.pow(1.4, keys_buffer / this.store.consecutive) * 100;
-    }
+    const percentage = this.store.player.metrics.health / 500 * 100;
+    const overCharged = this.store.player.metrics.shield > this.store.level * 3;
+    const overChargedPre = overCharged ? '<b>' : '';
+    const overChargedPost = overCharged ? '</b>' : '';
     $('#next-level')
       .css({
         'width': percentage + '%',
-        'background-color': this.keys_per_mistake > this.store.consecutive ? '#33BB77' : '#F78D1D' ,
-      }).text(keys_buffer + '-' + this.store.player.points);
+        'background-color': this.store.player.metrics.health == 500 ? '#33BB77' : '#F78D1D' ,
+      }).html(`Units: ${this.store.player.metrics.units}, Health: ${this.store.player.metrics.health},  ${overChargedPre}Shield: ${this.store.player.metrics.shield}/${this.store.level*3}${overChargedPost}`);
 
-    if (keys_buffer < -500) {
-      this.eventManager.dispatch('playerLost');
-    }
-
-    if (keys_buffer > this.store.consecutive * 3) {
-      this.eventManager.dispatch('playerGainedPoint')
-    }
 
     return percentage
   }

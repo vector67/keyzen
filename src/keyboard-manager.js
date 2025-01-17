@@ -1,10 +1,11 @@
 const clack = new Audio("clack.mp3");
 export class KeyboardManager {
-  constructor(store, stats, renderer, wordManager) {
+  constructor(store, stats, renderer, wordManager, eventManager) {
     this.store = store;
     this.stats = stats;
     this.renderer = renderer;
-    this.wordManager = wordManager
+    this.wordManager = wordManager;
+    this.eventManager = eventManager;
   }
   keyHandler(e) {
     this.stats.start_stats();
@@ -20,6 +21,7 @@ export class KeyboardManager {
     if(key == this.store.word[this.store.word_index]) {
       this.store.hits_correct += 1;
       this.store.in_a_row[key] += 1;
+      this.eventManager.dispatch('keystrokeCorrect', { key })
     }
     else {
       this.store.hits_wrong += 1;
@@ -27,6 +29,7 @@ export class KeyboardManager {
       this.store.in_a_row[key] = 0;
       clack.play();
       this.store.word_errors[this.store.word_index] = true;
+      this.eventManager.dispatch('keystrokeWrong', { key })
     }
     this.store.word_index += 1;
     if (this.store.word_index >= this.store.word.length) {
