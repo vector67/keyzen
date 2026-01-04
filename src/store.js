@@ -1,25 +1,26 @@
-import { Player } from './player.js'
+import { Player } from "./player.js";
 
 export class Store {
-  chars = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*(){}?+_|[]/=-\\\',."<>`~:;'
+  chars =
+    " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*(){}?+_|[]/=-\\',.\"<>`~:;";
   level = 30;
   word_length = 7;
   word_index = 0;
   current_layout = "colemak-dh";
-  custom_chars = '';
+  custom_chars = "";
   hits_correct = 0;
   hits_wrong = 0;
 
   constructor(player, eventManager) {
     this.in_a_row = {};
-    for(var i = 0; i < this.chars.length; i++) {
+    for (var i = 0; i < this.chars.length; i++) {
       this.in_a_row[this.chars[i]] = this.level;
     }
     // this.in_a_row[this.chars[l]] = 0;
     this.word_errors = {};
     // this.word = await generate_word();
-    // 
-    this.word = 'test';
+    //
+    this.word = "test";
     this.keys_hit = "";
     this.hits_wrong = 0;
     this.hits_correct = 0;
@@ -29,9 +30,12 @@ export class Store {
 
     this.player = player;
     this.eventManager = eventManager;
-    this.eventManager.subscribe('levelChanged', (({ level }) => {
-      this.level = level;
-    }).bind(this));
+    this.eventManager.subscribe(
+      "levelChanged",
+      (({ level }) => {
+        this.level = level;
+      }).bind(this),
+    );
   }
 
   restoreFromLocalStorage() {
@@ -54,8 +58,8 @@ export class Store {
     this.currentFile = data.currentFile;
     this.currentIndex = data.currentIndex;
 
-    this.player = new Player(this.eventManager, data.player);
-    this.eventManager.dispatch('levelChanged', {level: this.level})
+    this.player.fromObject(data.player);
+    this.eventManager.dispatch("levelChanged", { level: this.level });
   }
   saveToLocalStorage() {
     const data = {};
@@ -66,7 +70,7 @@ export class Store {
     data.custom_chars = this.custom_chars;
     data.hits_correct = this.hits_correct;
     data.hits_wrong = this.hits_wrong;
-    data.word = this.word
+    data.word = this.word;
     data.word_index = this.word_index;
     data.word_errors = this.word_errors;
     data.keys_hit = this.keys_hit;
@@ -81,5 +85,4 @@ export class Store {
 
     localStorage.data = JSON.stringify(data);
   }
-
 }

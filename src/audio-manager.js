@@ -5,6 +5,7 @@ export class AudioManager {
     this.eventManager = eventManager;
 
     this.eventManager.subscribe('playerGainedUnit', () => {
+      console.log('playing ding')
       ding.play();
     });
   }

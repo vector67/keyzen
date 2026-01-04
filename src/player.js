@@ -3,6 +3,7 @@ const getDefaultPlayerMetrics = () => ({ units: 0, health: MAX_HEALTH, shield: 0
 
 export class Player {
   constructor(eventManager, data) {
+    console.log('creating a new player');
     this.metrics = getDefaultPlayerMetrics();
     if (data) {
       this.fromObject(data);
@@ -24,6 +25,7 @@ export class Player {
 
       if (this.metrics.shield > this.level * 4) {
         this.eventManager.dispatch('playerGainedUnit');
+        console.log('dispatched player gained unit', this.metrics.shield, this.metrics.units);
         this.metrics.shield -= this.level;
         this.metrics.units += 1;
       }
